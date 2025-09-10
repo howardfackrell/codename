@@ -6,17 +6,15 @@ import org.apache.maven.plugins.annotations.LifecyclePhase;
 import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
 
-/**
- * Goal which gives some encouragement / validation
- */
+/** Goal which gives some encouragement / validation */
 @Mojo(name = "validate", defaultPhase = LifecyclePhase.VALIDATE)
 public class MyMojo extends AbstractMojo {
 
-    @Parameter(property = "from", defaultValue = "jeff")
-    private String from;
+  @Parameter(property = "from", defaultValue = "jeff")
+  private String from;
 
-    private static String jeffPicture =
-            """
+  private static String jeffPicture =
+      """
                         \n
                         ⡯⣯⣿⣽⢽⢵⢯⢯⡯⡾⣽⢽⢽⢵⢯⢯⢯⢾⢽⢽⢵⢯⢯⢯⢾⢽⢽⢽⢽⢽⢽⢽⢽⢽⢽⢽⢽⢽⢽⢽⢽⢽⡽⡽⣽⢽⢽⡽⡽⣽⢽⢽⡽⡽⣽⢽⢽⡽⡽⣽⢽⢽⡽⡽⣽⢽⢽⡽⡽⣽⢽⢽⡽⡽⣽⢽⢽⡽⡽⣽⢽⢽⡽⡽⣽⢽⢽⡽⡽⣽⢽⢽⡽⡽⣽⢽⢽⡽⡽⣽⢽⢽⡽⡽⣽⢽⢽⢽⢽⡽⡽⡽⡽⣽⣝⡷⡽⣽⣽⣿
                         ⡯⡷⣿⢯⢿⢽⣻⢽⢽⣫⢿⢽⢯⢟⡿⣽⣻⡻⡯⣟⣟⢿⢽⣻⡻⡯⣟⡿⣽⡻⡯⣟⡯⣟⡯⣟⡯⣟⡿⣽⣻⢯⣟⢿⢽⣻⢯⣟⢿⢽⣻⢯⣟⢿⢽⣻⢯⣟⢿⢽⣻⢯⣟⢿⢽⣻⢯⣟⢿⢽⣻⢯⣟⢿⢽⣻⢯⣟⢿⢽⣻⢯⣟⢿⢽⣻⢯⣟⢿⢽⣻⢯⣟⢿⢽⣻⢯⣟⢿⢽⣻⢯⣟⢿⢽⣻⣻⣻⢯⣟⡿⣽⣻⢷⢯⢿⢽⣳⡿⣿
@@ -80,7 +78,8 @@ public class MyMojo extends AbstractMojo {
                         ⠀⠀⠄⠐⠀⠀⡀⠁⡀⠁⠀⠀⡀⠐⠀⠂⠀⠁⢀⠀⠠⠐⠀⠀⠁⢀⠀⢀⠈⠀⠀⠀⠄⠀⢀⠐⠀⠐⠀⢀⠀⠀⠐⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⠁⠅⡁⡊⡐⡐⡀⡂⡁⢂⠡⢐⠨⢐⠠⢂⠂⡂⠠⠐⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢀⠠⠈⢀⠐⠀⠈⠀⡀⠄⠀⠀⠀⠁⡀⠐⠀⠈⠀⠀⠈⠀⠀⠄⠀⡀⠀⡀⠄⠂⠁⠀⠠⠀⠂
                     """;
 
-    private static String graybealPicture = """
+  private static String graybealPicture =
+      """
             \n
             ⣕⡳⣝⢮⣣⢳⡱⡕⡧⡳⡕⣇⢗⡕⣗⢕⢧⢳⢕⢧⢳⢕⢧⢳⢕⢧⢳⢕⢗⡕⣗⢕⡗⣕⢗⣕⢗⣕⢗⣝⢼⡪⡧⣳⡹⣜⢮⢳⢵⡹⣪⢮⡳⣝⢮⢳⣹⡪⣳⡹⣜⢮⡺⣜⢮⢎⣗⣝⢮⡳⣕⢧⡳⡵⣹⡪⣳⢝⡮⣳⢝⢮⡺⡜⣎⢮⢎⣗⣝⢮⡳⣝⢮⡳⣹⣪⡳⣝⡮⡯⡮⣣⡳⣱⡣⡯⡺⡪⡧⡳⡝⡮⣎⢗⡵⡝⡮⣎⢗⡵⡝⡮⣎⢗⡵⡝⡮⣎⢗⡵⣝⣜⢮⣣⡳⣕⢗⣕⢗⡕⡧⡳⣕⢗⡕⡧⡳⡕⣗⢕⢧⢳⡱⣝⢮⣳
             ⢮⡺⣪⣗⣗⣕⢧⢳⢝⢮⡳⡕⡧⣫⢮⡳⣝⢮⡳⣝⢮⡳⡽⣕⢯⡳⡽⣕⢯⡺⡮⣳⢝⡮⣳⢵⡫⣮⡳⡵⣳⢝⣞⢮⢞⡮⣗⢯⡳⣝⣮⡳⣕⢗⢽⢕⣧⣻⡪⣞⢮⢗⡽⡮⣗⡯⣞⣜⢞⢮⢯⣗⣟⡮⣗⡽⣺⢵⡫⣞⢽⢕⡷⣽⣺⢽⣳⢕⣗⢗⡽⣪⢗⣝⢮⣺⡪⡷⡽⣝⣞⢷⣝⣞⢮⢯⣺⢽⡺⣝⢽⣺⡪⡷⣝⣞⢽⣪⢗⣽⡺⣝⢮⣳⢽⡺⣝⢮⡳⣝⢮⢮⡳⡵⣝⢮⡳⡵⡳⣝⢮⢯⢮⡳⣝⢮⡳⣝⢮⢯⡺⡵⣝⢮⣻⣺
@@ -162,24 +161,24 @@ public class MyMojo extends AbstractMojo {
             ⠀⠀⠀⠀⠀⠀⠂⠁⠀⠀⠀⠁⠀⠀⠀⠐⠀⠀⠀⠀⠀⠀⠀⠄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠠⠀⠁⠀⠀⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠂⠀⠀⠀⠂⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
             """;
 
-    private static String[] encouragement = {
-            "You're doing great!",
-            "Keep it up!",
-            "You're on the right track!",
-            "You're doing a great job!",
-            "You're doing fantastic!",
-            "I can see you've worked hard on this",
-            "You should be proud",
-            "Don't get discouraged!",
-    };
+  private static String[] encouragement = {
+    "You're doing great!",
+    "Keep it up!",
+    "You're on the right track!",
+    "You're doing a great job!",
+    "You're doing fantastic!",
+    "I can see you've worked hard on this",
+    "You should be proud",
+    "Don't get discouraged!",
+  };
 
-    public void execute() throws MojoExecutionException {
+  public void execute() throws MojoExecutionException {
 
-        String picture = jeffPicture;
-        if ("graybeal".equalsIgnoreCase(from)) {
-            picture = graybealPicture;
-        }
-
-        getLog().warn(picture + "\n" + encouragement[(int) (Math.random() * encouragement.length)]);
+    String picture = jeffPicture;
+    if ("graybeal".equalsIgnoreCase(from)) {
+      picture = graybealPicture;
     }
+
+    getLog().warn(picture + "\n" + encouragement[(int) (Math.random() * encouragement.length)]);
+  }
 }

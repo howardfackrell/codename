@@ -108,10 +108,15 @@
                     <version>3.21.2</version>
                     <executions>
                         <execution>
-                            <id>default-check</id>
+                            <id>pmd</id>
                             <goals>
                                 <goal>check</goal>
                             </goals>
+                            <configuration>
+                                <rulesets>
+                                    <ruleset>/category/java/bestpractices.xml</ruleset>
+                                </rulesets>
+                            </configuration>
                         </execution>
                     </executions>
                 </plugin>
